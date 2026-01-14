@@ -5,35 +5,43 @@ import './App.css'
 import Cabecera from './componentes/Cabecera/Cabecera'
 import Dashboard from './componentes/Dashboard/Dashboard'
 import Roles from './componentes/Roles/Roles'
+import TokenContext from './contextos/TokenContext'
+import UserContext from './contextos/UserContext'
+
 
 
 
 function App() {
 
-  let usuario = "usuario1"
-  let token = "abcd.efgh.ijkl.mnop"
-  let menu = "menú1"
+  const usuario = "usuarioAPPPP"
+  const token = "abcd.efgh.ijkl.mnop"
+  const menu = "menú1"
 
+  const [user, setUser] = useState(usuario)
+
+  
 
   return (
     <>
-      <div className='container-fuid'>
-        <div className='row'>
-          <div className='col-12 fondoCabecera'>
-            <Cabecera usuario = {usuario}></Cabecera>
+      <TokenContext.Provider value={token}>
+        <div className='container-fuid'>
+          <div className='row'>
+            <div className='col-12 fondoCabecera'>
+              <Cabecera usuario={user}></Cabecera>
+            </div>
           </div>
+          <UserContext.Provider value={user}>
+            <div className='row'>
+              <div className='col-3 fondoRoles'>
+                <Roles menu={user}></Roles>
+              </div>
+              <div className='col-9 fondoDashboard'>
+                <Dashboard token={token}></Dashboard>
+              </div>
+            </div>
+          </UserContext.Provider>
         </div>
-        <div className='row'>
-          <div className='col-3 fondoRoles'>
-            <Roles menu =  {menu}></Roles>
-          </div>
-          <div className='col-9 fondoDashboard'>
-            <Dashboard token = {token}></Dashboard>
-          </div>
-
-        </div>
-      </div>
-
+      </TokenContext.Provider>
 
     </>
   )
