@@ -7,6 +7,8 @@ import Dashboard from './componentes/Dashboard/Dashboard'
 import Roles from './componentes/Roles/Roles'
 import TokenContext from './contextos/TokenContext'
 import UserContext from './contextos/UserContext'
+import SelectorTareaRA from './componentes/SelectorTareaRA/SelectorTareaRA'
+import NuevaEvidenciaForm from './componentes/NuevaEvidenciaForm/NuevaEvidenciaForm'
 
 
 
@@ -19,7 +21,8 @@ function App() {
 
   const [user, setUser] = useState(usuario)
 
-  
+  const tarea = {id: 1,
+ observaciones: "adwadadadwad"}
 
   return (
     <>
@@ -36,13 +39,12 @@ function App() {
                 <Roles menu={user}></Roles>
               </div>
               <div className='col-9 fondoDashboard'>
-                <Dashboard token={token}></Dashboard>
+                <Dashboard token={token} tarea={tarea}></Dashboard>
               </div>
             </div>
           </UserContext.Provider>
         </div>
-      </TokenContext.Provider>
-
+      </TokenContext.Provider> 
     </>
   )
 }
