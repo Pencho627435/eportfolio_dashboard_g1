@@ -15,7 +15,7 @@ import NuevaEvidenciaForm from './componentes/NuevaEvidenciaForm/NuevaEvidenciaF
 
 function App() {
 
-  const usuario = "usuarioAPPPP"
+  const usuario = "Victor"
   const token = "abcd.efgh.ijkl.mnop"
   const menu = "menú1"
 
