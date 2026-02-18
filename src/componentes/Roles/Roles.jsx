@@ -1,9 +1,10 @@
+import MenuRoles from "../MenuRoles/MenuRoles"
 function Roles(props) {
 
     return (
         <aside>
             <p>Roles {props.menu}</p>
-            <Accordion usuario={props.menu}></Accordion>
+            <MenuRoles usuario={props.menu}></MenuRoles>
         </aside>
     )
 

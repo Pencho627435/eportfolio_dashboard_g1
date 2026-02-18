@@ -30,7 +30,7 @@ function App() {
         <div className='container-fuid'>
           <div className='row'>
             <div className='col-12 fondoCabecera'>
-              <Cabecera usuario={user}></Cabecera>
+              <Cabecera usuario={user} ></Cabecera>
             </div>
           </div>
           <UserContext.Provider value={user}>

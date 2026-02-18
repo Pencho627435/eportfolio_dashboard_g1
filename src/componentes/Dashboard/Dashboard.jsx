@@ -1,17 +1,17 @@
 
-import NuevaEvidencia from "../NuevaEvidencia/NuevaEvidencia";
+import { Routes, Route } from "react-router-dom"
+import FuncionalidadDocente from "../../paginas/FUNCIONALIDADDOCENTE"
+import FuncionalidadEstudiante from "../../paginas/FUNCIONALIDADESTUDIANTE"
 
 function Dashboard(props) {
 
     return (
 
         <main>
-            <p>Main {props.token}</p>
-            <div className='row'>
-                <div className='col-12'>
-                    <NuevaEvidencia tarea={props.tarea}></NuevaEvidencia>
-                </div>
-            </div>
+            <Routes>
+                <Route path="/funcionalidaddocente/:modulo" element={<FuncionalidadDocente/>} />
+                <Route path="/funcionalidadestudiante/:modulo" element={<FuncionalidadEstudiante tarea={props.tarea}/>} />
+            </Routes>
         </main>
     )
 

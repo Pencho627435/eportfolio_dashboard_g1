@@ -1,12 +1,12 @@
 import { useState } from "react";
 import roles from "../../mocks/mock-roles";
 
-function useRoles(usuario_) {
+function useRoles(usuario) {
 
 
     const [buscando, setBuscando] = useState(false);
 
-    const [lista, setLista] = useState(roles[usuario_] ? roles[usuario_].roles : []);
+    const [lista, setLista] = useState(roles[usuario] ? roles[usuario].roles : []);
     
     return {buscando, lista}
     

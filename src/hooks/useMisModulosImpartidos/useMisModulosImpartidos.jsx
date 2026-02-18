@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import modulosImpartidos from "../../mocks/mock-impartidos";
 
-function useMisModulosImpartidos(usuario_) {
+function useMisModulosImpartidos(usuario) {
 
 
     const [buscando, setBuscando] = useState(false);
 
-    const [lista, setLista] = useState(modulosImpartidos[usuario_] ? modulosImpartidos[usuario_].lista : []);
+    const [lista, setLista] = useState(modulosImpartidos[usuario] ? modulosImpartidos[usuario].lista : []);
     
     
     return {buscando, lista}

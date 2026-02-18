@@ -3,7 +3,8 @@ function Cabecera(props) {
     return (
 
         <header>
-            <p>HEADER {props.usuario}</p>
+            <p>EPORFOLIO:FULGENCIO ALACID LAJARA</p>
+            <p>usuario conectado: {props.usuario}</p>
         </header>
 
     )

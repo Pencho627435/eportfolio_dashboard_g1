@@ -4,7 +4,7 @@ import NuevaEvidenciaForm from "../NuevaEvidenciaForm/NuevaEvidenciaForm"
 
 import mockTareasRA from "../../mocks/mock-tareasRA"
 
-function NuevaEvidencia(props) {
+function NuevaEvidencia() {
 
     const [tareaSeleccionada, setTareaSeleccionada] = useState(mockTareasRA.lista[0]);
 
