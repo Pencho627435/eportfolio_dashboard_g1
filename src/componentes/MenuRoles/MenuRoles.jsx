@@ -5,6 +5,7 @@ import useRoles from "../../hooks/useRoles/useRoles"
 import useMisModulosImpartidos from "../../hooks/useMisModulosImpartidos/useMisModulosImpartidos"
 import useMisModulosMatriculados from "../../hooks/useMisModulosMatriculados/useMisModulosMatriculados"
 import adminMenu from "../../mocks/mock-administrador"
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function MenuRoles(props) {
 
@@ -51,7 +52,7 @@ function MenuRoles(props) {
             
                <Accordion key={opcionMenu}>
                    <AccordionSummary
-                       expandIcon={""}
+                       expandIcon={<ExpandMoreIcon />}
                        aria-controls="panel1-content"
                        id="panel1-header"
                    >
