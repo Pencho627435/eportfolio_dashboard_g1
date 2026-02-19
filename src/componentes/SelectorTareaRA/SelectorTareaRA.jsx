@@ -8,7 +8,17 @@ function SelectorTareaRA(props) {
 
 
 
-    const [tareaSeleccionada, setTareaSeleccionada] = useState(props.mockTareasRA.lista[0].id)
+    const [tareaSeleccionada, setTareaSeleccionada] = useState("")
+
+    useEffect(seleccionarTareaInicial, [props.tareasRA])
+
+
+    function seleccionarTareaInicial() {
+        if(props.tareasRA.length > 0) {
+            setTareaSeleccionada(props.tareasRA[0].id)
+            props.manejarTareaSeleccionada(props.tareasRA[0].id)
+        }
+    }
 
 
     function manejarSeleccionTarea(tarea) {
@@ -45,7 +55,7 @@ function SelectorTareaRA(props) {
                     label="Tarea"
                     onChange={manejarSeleccionTarea}
                 >
-                    {props.mockTareasRA.lista.map(listarTareas)}
+                    {props.tareasRA.map(listarTareas)}
                 </Select>
             </FormControl>
         </>

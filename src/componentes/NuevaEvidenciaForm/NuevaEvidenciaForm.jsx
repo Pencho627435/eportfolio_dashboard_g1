@@ -6,11 +6,13 @@ import { Button } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
 import UserContext from "../../contextos/UserContext"
 import { useContext } from "react"
+import useEvidencias from "../../hooks/useEvidencias/useEvidencias"
 
 
 function NuevaEvidenciaForm(props) {
 
     const { user } = useContext(UserContext);
+    const { lista,cargando,crearEvidencia } = useEvidencias();
 
     console.log("FORM ", props.tarea)
 
@@ -42,13 +44,15 @@ function NuevaEvidenciaForm(props) {
     // devolver el coche creado al objeto padre
     const manejarFormulario = handleSubmit((NuevaEvidencia) => {
 
-        console.log(NuevaEvidencia);
-
-        // A través de la función que recibe el componente como props, devolvemos el nuevo coche
-        // al componente padre para que lo añada a la lista de coches
-        props.manejarNuevaEvidencia(NuevaEvidencia);
-
-        reset(EVIDENCIAINICIAL);
+        crearEvidencia(NuevaEvidencia).then ((evidenciaCreada) => {
+            if (Object.keys(evidenciaCreada).length > 0) {
+                 console.log("Evidencia creada");
+                reset(EVIDENCIAINICIAL);
+            }
+            else {
+                console.log("Error al crear la evidencia");
+            }
+        })
     })
 
     return (
@@ -83,8 +87,8 @@ function NuevaEvidenciaForm(props) {
                 helperText={errors.descripcion?.message}
             />
 
-            <Button variant="contained" endIcon={<SendIcon />} type="submit">
-                Añadir Evidencia
+            <Button disabled={props.cargando} variant="contained" endIcon={<SendIcon />} type="submit">{props.cargando ? "Guardando..." 
+                                                                : "Guardar Evidencia"}
             </Button>
             <br></br>
         </form>

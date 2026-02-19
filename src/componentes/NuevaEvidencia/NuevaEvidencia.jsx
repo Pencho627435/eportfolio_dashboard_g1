@@ -2,15 +2,28 @@ import { useState } from "react"
 import SelectorTareaRA from "../SelectorTareaRA/SelectorTareaRA"
 import NuevaEvidenciaForm from "../NuevaEvidenciaForm/NuevaEvidenciaForm"
 
-import mockTareasRA from "../../mocks/mock-tareasRA"
+//import mockTareasRA from "../../mocks/mock-tareasRA"
+import useTareasRA from "../../hooks/useTareasRA/useTareasRA"
+import { useEffect } from "react"
 
 function NuevaEvidencia() {
 
-    const [tareaSeleccionada, setTareaSeleccionada] = useState(mockTareasRA.lista[0]);
+    const {lista : tareasRA} = useTareasRA();
+    const [tareaSeleccionada, setTareaSeleccionada] = useState(null);
 
-    function manejarTareaSeleccionada(tarea) {
-        console.log("Tarea seleccionada", tarea)
-        setTareaSeleccionada(tarea)
+    useEffect(seleccionarTareaInicial, [tareasRA])
+
+    function seleccionarTareaInicial() {
+        if(tareasRA.length > 0) {
+            setTareaSeleccionada(tareasRA[0])
+        }
+    }
+        
+
+    function manejarTareaSeleccionada(idTarea) {
+
+        const tareaObjeto = tareasRA.find(t => t.id === idTarea);
+        setTareaSeleccionada(tareaObjeto);
     }
 
     function manejarNuevaEvidencia(evidencia) {
@@ -21,9 +34,9 @@ function NuevaEvidencia() {
     return (
 
         <>
-            <SelectorTareaRA mockTareasRA={mockTareasRA} 
+            <SelectorTareaRA tareasRA={tareasRA} 
                              manejarTareaSeleccionada={manejarTareaSeleccionada}></SelectorTareaRA>
-            <NuevaEvidenciaForm tarea={tareaSeleccionada} manejarNuevaEvidencia={manejarNuevaEvidencia}></NuevaEvidenciaForm>
+            {tareaSeleccionada && (<NuevaEvidenciaForm tarea={tareaSeleccionada} manejarNuevaEvidencia={manejarNuevaEvidencia}></NuevaEvidenciaForm>)}
         </>
 
     )
